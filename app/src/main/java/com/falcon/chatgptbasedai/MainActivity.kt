@@ -4,16 +4,15 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.Toast
 import com.falcon.chatgptbasedai.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -34,14 +33,14 @@ private lateinit var binding: ActivityMainBinding
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.fab.setOnClickListener { view ->
+        binding.fab.setOnClickListener {
             composeEmail("Regarding App " + getString(R.string.app_name))
         }
     }
     private fun composeEmail(subject: String) {
         val a = arrayOf("mindtechinsights@gmail.com")
         val intent = Intent(Intent.ACTION_SENDTO).apply {
-            data = Uri.parse("mailto:") // only email apps should handle this
+            data = Uri.parse("mailto:")
             putExtra(Intent.EXTRA_EMAIL, a)
             putExtra(Intent.EXTRA_SUBJECT, subject)
         }
@@ -51,16 +50,12 @@ private lateinit var binding: ActivityMainBinding
             Toast.makeText(this, "No Mail App Found", Toast.LENGTH_SHORT).show()
         }
     }
-override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         return when(item.itemId) {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
