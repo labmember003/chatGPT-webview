@@ -33,9 +33,9 @@ private lateinit var binding: ActivityMainBinding
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.fab.setOnClickListener {
-            composeEmail("Regarding App " + getString(R.string.app_name))
-        }
+//        binding.fab.setOnClickListener {
+//            composeEmail("Regarding App " + getString(R.string.app_name))
+//        }
     }
     private fun composeEmail(subject: String) {
         val a = arrayOf("mindtechinsights@gmail.com")
