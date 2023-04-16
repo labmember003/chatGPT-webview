@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     tools:context=".FirstFragment"
+    android:fitsSystemWindows="true"
     >
 
-
     <WebView
+        android:windowSoftInputMode="adjustResize"
         android:id="@+id/resultWebView"
         android:visibility="invisible"
         android:layout_width="0dp"
@@ -26,7 +27,7 @@
         app:lottie_rawRes="@raw/loading_cats"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-
+        android:windowSoftInputMode="adjustResize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
